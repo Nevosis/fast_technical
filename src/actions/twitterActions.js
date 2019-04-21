@@ -14,10 +14,29 @@ function getPostsError(err) {
 export function getPosts() {
   return function(dispatch, getState) {
     dispatch(startGetPosts());
-    twitterApi.getPosts().then((posts) => {
-      dispatch(getPostsSuccess(posts));
-    }).catch((err) => {
-      dispatch(getPostsError(err));
-    });
+    twitterApi
+      .getPosts()
+      .then(posts => {
+        let postsFormatted = formatPosts(posts);
+        dispatch(getPostsSuccess(postsFormatted));
+      })
+      .catch(err => {
+        dispatch(getPostsError(err));
+      });
   };
+}
+
+export function addPost(title, body) {
+  return { type: types.ADD_POST, post: { title, body } };
+}
+export function removePost(id) {
+  return { type: types.REMOVE_POST, id };
+}
+
+function formatPosts(posts) {
+  let postsFormatted = [];
+  posts.forEach(post => {
+    postsFormatted.push({ id: post.id, title: post.title, body: post.body });
+  });
+  return postsFormatted;
 }
