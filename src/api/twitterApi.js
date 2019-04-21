@@ -1,7 +1,14 @@
+import { axiosInstance, resolvePromise } from "../utils/axios";
+import { httpRoutes } from "../utils/config";
+
 const twitterApi = {
 	getPosts() {
 		return new Promise(function(resolve, reject) {
-			resolve([]);
+			resolvePromise(
+				axiosInstance.get(httpRoutes.twitter.getPosts),
+				resolve,
+				reject
+			);
 		});
 	}
 };

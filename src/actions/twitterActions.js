@@ -14,10 +14,11 @@ function getPostsError(err) {
 export function getPosts() {
   return function(dispatch, getState) {
     dispatch(startGetPosts());
- 
     twitterApi.getPosts().then((posts) => {
+      console.warn(posts)
       dispatch(getPostsSuccess(posts));
     }).catch((err) => {
+      console.warn(err)
       dispatch(getPostsError(err));
     });
   };

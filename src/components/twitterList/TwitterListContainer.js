@@ -8,11 +8,11 @@ class TwitterListContainer extends Component {
 		super(props);
 	}
 	componentDidMount() {
-		//store.dispatch(loginUser(login, password))
+		store.dispatch(getPosts())
 	}
 	render() {
 		if (this.props.posts.length) return <div>toto</div>;
-		return null;
+		return <div>Loading...</div>
 	}
 }
 
