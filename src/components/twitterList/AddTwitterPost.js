@@ -23,7 +23,10 @@ class AddTwitterPost extends Component {
 	handleSubmit(event) {
 		if (this.state.newPostTitle && this.state.newPostBody) {
 			store.dispatch(
-				addPost(this.state.newPostTitle, this.state.newPostBody)
+				addPost(
+					this.state.newPostTitle,
+					this.state.newPostBody.replace(/[\n\r]/g, " ")
+				)
 			);
 			this.setState({ newPostTitle: "", newPostBody: "" });
 		}
@@ -60,6 +63,5 @@ class AddTwitterPost extends Component {
 		);
 	}
 }
-
 
 export default AddTwitterPost;

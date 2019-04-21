@@ -42,7 +42,7 @@ function formatPosts(posts) {
     postsFormatted.push({
       id: post.id,
       title: post.title,
-      body: post.body.replace(/[\n\r]/g, "")
+      body: post.body.replace(/[\n\r]/g, " ")
     });
   });
   return postsFormatted;

@@ -29,7 +29,7 @@ class TwitterPost extends Component {
 		store.dispatch(
 			updatePost(
 				this.props.id,
-				this.state.bodyEditing.replace(/[\n\r]/g, "") //removing cariage return.
+				this.state.bodyEditing.replace(/[\n\r]/g, " ") //removing cariage return.
 			)
 		);
 		this.setState({ editing: false });
