@@ -29,6 +29,19 @@ const twitterReducer = (state = initialState, action) => {
         posts: state.posts.filter(post => post.id !== action.id)
       };
     }
+    case types.UPDATE_POST: {
+      const updatedPosts = state.posts.map(post => {
+        if (post.id === action.id) {
+          return { ...post, body: action.body };
+        }
+        return post;
+      });
+
+      return {
+        ...state,
+        posts: updatedPosts
+      };
+    }
     default:
       return state;
   }

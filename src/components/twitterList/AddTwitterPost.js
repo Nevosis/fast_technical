@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { addPost } from "../../actions/twitterActions";
 import store from "../../store";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
 
 class AddTwitterPost extends Component {
 	constructor(props) {
@@ -22,33 +25,41 @@ class AddTwitterPost extends Component {
 			store.dispatch(
 				addPost(this.state.newPostTitle, this.state.newPostBody)
 			);
-			this.setState({newPostTitle:"", newPostBody:""})
+			this.setState({ newPostTitle: "", newPostBody: "" });
 		}
 		event.preventDefault();
 	}
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<div>AddPost</div>
-				<div>
-					<input
-						type="text"
-						value={this.state.newPostTitle}
-						onChange={this.updateTitle}
-					/>
-				</div>
-				<div>
-					<input
-						type="text"
-						value={this.state.newPostBody}
-						onChange={this.updateBody}
-					/>
-				</div>
-
-				<input type="submit" value="Submit" />
-			</form>
+			<Card style={{ marginTop: 50, width: "100%" }}>
+				<Card.Body>
+					<Card.Title>Ajouter un tweet</Card.Title>
+					<Form onSubmit={e => this.handleSubmit(e)}>
+						<Form.Group controlId="Title">
+							<Form.Control
+								placeholder="Titre"
+								value={this.state.newPostTitle}
+								onChange={this.updateTitle}
+							/>
+						</Form.Group>
+						<Form.Group controlId="Body">
+							<Form.Control
+								as="textarea"
+								rows="3"
+								placeholder="Contenu"
+								value={this.state.newPostBody}
+								onChange={this.updateBody}
+							/>
+						</Form.Group>
+						<Button variant="primary" type="submit">
+							Submit
+						</Button>
+					</Form>
+				</Card.Body>
+			</Card>
 		);
 	}
 }
+
 
 export default AddTwitterPost;

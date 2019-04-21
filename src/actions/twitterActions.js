@@ -32,11 +32,18 @@ export function addPost(title, body) {
 export function removePost(id) {
   return { type: types.REMOVE_POST, id };
 }
+export function updatePost(id, body) {
+  return { type: types.UPDATE_POST, id, body };
+}
 
 function formatPosts(posts) {
   let postsFormatted = [];
   posts.forEach(post => {
-    postsFormatted.push({ id: post.id, title: post.title, body: post.body });
+    postsFormatted.push({
+      id: post.id,
+      title: post.title,
+      body: post.body.replace(/[\n\r]/g, "")
+    });
   });
   return postsFormatted;
 }

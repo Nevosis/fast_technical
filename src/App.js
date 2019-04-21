@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TwitterListContainer from "./components/twitterList/TwitterListContainer"
-import './App.css';
 
 class App extends Component {
   render() {
