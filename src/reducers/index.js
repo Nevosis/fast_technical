@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import appReducer from './appReducer';
+import twitterReducer from './twitterReducer';
 
 // Combine Reducers
 const reducers = combineReducers({
-	appState: appReducer,
+	twitterState: twitterReducer
 });
 
 export default reducers;
