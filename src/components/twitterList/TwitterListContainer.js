@@ -5,9 +5,6 @@ import store from "../../store";
 import TwitterList from "./TwitterList";
 
 class TwitterListContainer extends Component {
-	constructor(props) {
-		super(props);
-	}
 	componentDidMount() {
 		store.dispatch(getPosts());
 	}
