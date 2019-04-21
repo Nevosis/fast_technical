@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../../actions/twitterActions";
 import store from "../../store";
+import TwitterList from "./TwitterList";
 
 class TwitterListContainer extends Component {
 	constructor(props) {
 		super(props);
 	}
 	componentDidMount() {
-		store.dispatch(getPosts())
+		store.dispatch(getPosts());
 	}
 	render() {
-		if (this.props.posts.length) return <div>toto</div>;
-		return <div>Loading...</div>
+		if (this.props.posts.length)
+			return <TwitterList posts={this.props.posts} />;
+		return <div>Loading...</div>;
 	}
 }
 
